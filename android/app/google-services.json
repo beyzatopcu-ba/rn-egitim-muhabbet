@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "244353972136",
+    "project_id": "muhabbet-dbec1",
+    "storage_bucket": "muhabbet-dbec1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244353972136:android:da851ed98f26cc52604f9d",
+        "android_client_info": {
+          "package_name": "com.muhabbet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244353972136-o8f7r466ea7396bun6c1o0eoo14g1b1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0DPPl-bz5-BI3667BwX1BFsbkTXH5N9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244353972136-o8f7r466ea7396bun6c1o0eoo14g1b1f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "244353972136-vgbtkd284nqf9oslg7ig51m0tqpin377.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.Muhabbet"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
