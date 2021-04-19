@@ -1,0 +1,1 @@
+export { ThemeReducer } from './Redux/ThemingRedux';

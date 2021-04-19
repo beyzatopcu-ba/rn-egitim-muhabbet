@@ -7,6 +7,7 @@ const REDUX_PERSIST = {
     key: 'primary',
     storage: AsyncStorage,
     whitelist: [
+      THEMING_NAMESPACE,
     ],
   },
 };
