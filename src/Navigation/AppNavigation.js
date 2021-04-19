@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Text } from 'react-native';
+import SettingsScreen from '../Modules/Settings/Screens/SettingsScreen';
 
 const AppStack = createStackNavigator();
 
@@ -10,8 +11,8 @@ const AppNavigation = () => {
         <AppStack.Navigator
         >
             <AppStack.Screen
-                name="dummy-screen"
-                component={() => <Text>laskdla</Text>}
+                name="settings-screen"
+                component={SettingsScreen}
             />
         </AppStack.Navigator>
     );
