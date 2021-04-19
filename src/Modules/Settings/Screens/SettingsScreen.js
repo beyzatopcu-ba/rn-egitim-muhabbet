@@ -1,11 +1,17 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import { useThemedValues } from '../../Theming';
 
-import styles from '../styles/SettingsScreenStyles';
+import getStyles from '../styles/SettingsScreenStyles';
 
 const SettingsScreen = props => {
+
+    const {styles, colors} = useThemedValues(getStyles);
+
     return (
-        <Text>SettingsScreen</Text>
+        <View style={styles.container}>
+
+        </View>
     );
 };
 
