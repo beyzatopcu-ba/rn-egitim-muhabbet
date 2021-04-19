@@ -1,32 +1,51 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { useChangeTheme, useThemedValues } from '../../Theming';
+import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import { useChangeTheme, useTheme, useThemedValues } from '../../Theming';
 import { ThemeModes } from '../../Theming/ThemingConstants';
+import OptionMenu from '../Components/OptionMenu';
 
 import getStyles from '../styles/SettingsScreenStyles';
 
 const SettingsScreen = props => {
 
+    const currentTheme = useTheme();
+
     const params = {};
     const {styles, colors} = useThemedValues(getStyles, params);
     const changeTheme = useChangeTheme();
 
-    const _onPress_MakeDark = () => {
-        changeTheme(ThemeModes.dark);
-    };
+    const themeOptions = [
+        {
+            key: ThemeModes.dark,
+            title: 'Karanlık',
+        },
+        {
+            key: ThemeModes.light,
+            title: 'Aydınlık',
+        },
+    ]
 
-    const _onPress_MakeLight = () => {
-        changeTheme(ThemeModes.light);
+    const _onSelect_Theme = (key) => {
+        changeTheme(key);
     }
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={_onPress_MakeDark}>
-                <Text>Karanlık</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={_onPress_MakeLight}>
-                <Text>Aydınlık</Text>
-            </TouchableOpacity>
+            <SafeAreaView style={{flex: 1}}>
+                <Text style={styles.nameText}>Beyza Topçu</Text>
+                <Text style={styles.emailText}>beyzatopcu@mail.com</Text>
+                <View style={styles.menusContainer}>
+                    <OptionMenu 
+                        options={themeOptions}
+                        menuTitle={'Renk Teması'}
+                        selectedOptionKey={currentTheme}
+                        onSelect={_onSelect_Theme}
+                    />
+                </View>
+                <TouchableOpacity style={styles.signOutTouchable}>
+                    <Text style={styles.signOutText}>Çıkış Yap</Text>
+                </TouchableOpacity>
+            </SafeAreaView>
         </View>
     );
 };

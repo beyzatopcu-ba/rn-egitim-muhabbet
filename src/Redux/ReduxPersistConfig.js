@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
+import { THEMING_NAMESPACE } from '../Modules/Theming';
 
 // More info here:  https://shift.infinite.red/shipping-persistant-reducers-7341691232b1
 const REDUX_PERSIST = {
