@@ -1,1 +1,1 @@
-export { ThemeReducer } from './Redux/ThemingRedux';
+export { ThemeReducer, THEMING_NAMESPACE } from './Redux/ThemingRedux';

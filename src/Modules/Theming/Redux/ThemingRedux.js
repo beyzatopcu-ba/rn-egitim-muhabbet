@@ -3,7 +3,7 @@ import { ThemeModes } from "../ThemingConstants";
 export const THEMING_NAMESPACE = 'theming';
 
 const INITIAL_STATE = {
-    themeMode: ThemeModes.light,
+    themeMode: ThemeModes.dark,
 };
 
 const ThemingTypes = {
