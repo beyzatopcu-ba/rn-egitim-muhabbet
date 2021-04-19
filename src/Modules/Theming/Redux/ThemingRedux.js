@@ -18,7 +18,7 @@ export const ThemingActionCreators = {
 }
 
 export const ThemingSelectors = {
-    themeMode: globalState => globalState[nameSpace].themeMode,
+    themeMode: globalState => globalState[THEMING_NAMESPACE].themeMode,
 }
 
 export const ThemeReducer = (state = INITIAL_STATE, action) => {
