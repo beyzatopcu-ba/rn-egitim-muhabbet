@@ -12,7 +12,7 @@
  import { PersistGate } from 'redux-persist/integration/react';
  
  import createStore from './Redux/CreateStore';
-import { Text } from 'react-native';
+import MainNavigation from './Navigation/MainNavigation';
  
  
  const { store, persistor } = createStore();
@@ -22,7 +22,7 @@ import { Text } from 'react-native';
    return (
      <Provider store={store}>
        <PersistGate loading={null} persistor={persistor}>
-         <Text>aksjd</Text>
+         <MainNavigation />
        </PersistGate>
      </Provider>
    );
