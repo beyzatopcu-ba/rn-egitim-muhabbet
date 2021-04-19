@@ -11,7 +11,7 @@ const AppNavigation = () => {
         >
             <AppStack.Screen
                 name="dummy-screen"
-                component={() => <Text>laskdl</Text>}
+                component={() => <Text>laskdla</Text>}
             />
         </AppStack.Navigator>
     );
