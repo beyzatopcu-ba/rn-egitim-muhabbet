@@ -1,3 +1,4 @@
+// text names
 export const tn = {
     email: 'email',
     password: 'password',

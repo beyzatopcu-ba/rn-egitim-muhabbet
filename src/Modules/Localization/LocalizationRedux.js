@@ -18,7 +18,7 @@ export const LocalizationActionCreators = {
 }
 
 export const LocalizationSelectors = {
-    themeMode: globalState => globalState[LOCALIZATION_NAMESPACE].locale,
+    locale: globalState => globalState[LOCALIZATION_NAMESPACE].locale,
 }
 
 export const LocalizationReducer = (state = INITIAL_STATE, action) => {
