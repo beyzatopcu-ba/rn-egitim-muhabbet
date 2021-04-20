@@ -1,11 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Text } from 'react-native';
 import SettingsScreen from '../Modules/Settings/Screens/SettingsScreen';
 import ChatScreen from '../Modules/Chat/Screen/ChatScreen';
 import { Fonts, Metrics } from '../StylingConstants';
 import { cn, useThemedColors } from '../Modules/Theming';
 import { useLocalization, tn } from '../Modules/Localization';
+import SettingsIcon from './SettingsIcon';
+
 
 const AppStack = createStackNavigator();
 
@@ -31,6 +32,7 @@ const AppNavigation = () => {
                         fontSize: Fonts.size(18),
                         color: colors[cn.header.text],
                     },
+                    headerRight: SettingsIcon
                 }}
             />
             <AppStack.Screen
