@@ -87,12 +87,10 @@ function* watchSignOutRequest() {
     yield takeEvery(SIGN_OUT_REQUEST, workerSignOut)
 }
 
-const userSagas = [
+export const userSagas = [
     fork(watchSignUpRequest),
     fork(watchSignOutRequest),
     fork(watchSignInRequest),
 ];
-
-export default userSagas;
 
 
