@@ -11,11 +11,11 @@ import {
 import AuthInput from '../Components/AuthInput';
 import AuthButton from '../Components/AuthButton';
 
-import Images from '../../../StylingConstants/Images';
+import {Images} from '../../../StylingConstants';
 
 import getStyles from '../styles/AuthScreenStyles';
-import { useThemedStyles, useThemedOption } from '../../Theming';
-import { Texts, useLocalization, useLocale } from '../../Localization';
+import { useThemedStyles } from '../../Theming';
+import { tn, useLocalization, useLocale } from '../../Localization';
 
 const AuthScreen = props => {
 
@@ -23,18 +23,17 @@ const AuthScreen = props => {
 
     const styles = useThemedStyles(getStyles);
     const loc = useLocalization();
-    const appLogoImage = useThemedOption(Images.appLogoLight, Images.appLogoDark);
 
     const locale = useLocale();
-    const loginUppercase = loc.t(Texts.login).toLocaleUpperCase(locale);
-    const signupUppercase = loc.t(Texts.signup).toLocaleUpperCase(locale);
+    const loginUppercase = loc.t(tn.login).toLocaleUpperCase(locale);
+    const signupUppercase = loc.t(tn.signUp).toLocaleUpperCase(locale);
 
     return (
         <SafeAreaView style={styles.safeArea}>
             <KeyboardAvoidingView style={styles.keyboardAvoiding} behavior={'padding'} keyboardVerticalOffset={0}>
                 <View style={styles.container}>
                     <View style={styles.appLogoContainer}>
-                        <Image source={appLogoImage} style={styles.image} />
+                        <Image source={Images.appLogoLight} style={styles.image} />
                     </View>
                     <View style={styles.inputsContainer}>
                     {
@@ -46,7 +45,7 @@ const AuthScreen = props => {
                                         value={props.nameValue}
                                         onChangeText={props.onChangeText_Name}
                                         autoCapitalize={'words'}
-                                        placeholder={loc.t(Texts.name)} />
+                                        placeholder={loc.t(tn.username)} />
                                 </View>
                         }
                         <View style={styles.inputContainer}>
@@ -54,29 +53,16 @@ const AuthScreen = props => {
                                 value={props.emailValue}
                                 onChangeText={props.onChangeText_Email}
                                 autoCapitalize={'none'}
-                                placeholder={loc.t(Texts.email)} />
+                                placeholder={loc.t(tn.email)} />
                         </View>
                         <View style={styles.inputContainer}>
                             <AuthInput
                                 value={props.passwordValue}
                                 onChangeText={props.onChangeText_Password}
                                 autoCapitalize={'none'}
-                                placeholder={loc.t(Texts.password)}
+                                placeholder={loc.t(tn.password)}
                                 secureTextEntry={true} />
                         </View>
-                        {
-                            isLogin ?
-                                null
-                                :
-                                <View style={styles.inputContainer}>
-                                    <AuthInput
-                                        value={props.passwordConfirmValue}
-                                        onChangeText={props.onChangeText_PasswordConfirm}
-                                        autoCapitalize={'none'}
-                                        placeholder={loc.t(Texts.passwordConfirm)}
-                                        secureTextEntry={true} />
-                                </View>
-                        }
                     </View>
                     <View style={styles.buttonsContainer}>
                         <AuthButton
@@ -85,7 +71,7 @@ const AuthScreen = props => {
                             text={isLogin ? loginUppercase : signupUppercase} />
                         <TouchableOpacity style={styles.signupTouchable} onPress={() => setIsLogin(!isLogin)}>
                             <Text style={styles.signupText}>
-                                {isLogin ? loc.t(Texts.signup) : loc.t(Texts.login)}
+                                {isLogin ? loc.t(tn.signUp) : loc.t(tn.login)}
                             </Text>
                         </TouchableOpacity>
                     </View>

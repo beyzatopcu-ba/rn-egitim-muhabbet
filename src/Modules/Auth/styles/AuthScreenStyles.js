@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
 import { Fonts, Metrics } from '../../../StylingConstants';
-import { colorNames } from '../../Theming/Colors';
+import { cn } from '../../Theming';
 
 const styles = (Colors) => StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: Colors[colorNames.auth.background],
+        backgroundColor: Colors[cn.auth.background],
     },
     keyboardAvoiding: {
         flex: 1,
@@ -52,17 +52,17 @@ const styles = (Colors) => StyleSheet.create({
     signupTouchable: {
         alignItems: 'center',
         marginTop: Metrics.width * 0.02,
-        backgroundColor: Colors[colorNames.auth.paleButtonBackground],
+        backgroundColor: Colors[cn.auth.paleButtonBackground],
     },
     signupText: {
         fontFamily: Fonts.type.bold,
         fontSize: Fonts.size(18),
-        color: Colors[colorNames.auth.paleButtonText],
+        color: Colors[cn.auth.paleButtonText],
     },
     appNameText: {
         fontFamily: Fonts.type.logo,
         fontSize: Fonts.size(40),
-        color: Colors[colorNames.auth.appNameText],
+        color: Colors[cn.auth.appNameText],
         letterSpacing: Metrics.width * 0.02,
     },
 });
