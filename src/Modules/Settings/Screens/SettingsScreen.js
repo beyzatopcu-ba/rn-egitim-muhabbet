@@ -1,7 +1,8 @@
 import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
-import { useChangeTheme, useTheme, useThemedValues } from '../../Theming';
-import { ThemeModes } from '../../Theming/ThemingConstants';
+
+import { useChangeTheme, useTheme, useThemedValues, useThemeOptions } from '../../Theming';
+import { useLocalization, tn, useLocaleOptions, useLocale, useChangeLocale } from '../../Localization';
 import OptionMenu from '../Components/OptionMenu';
 
 import getStyles from '../styles/SettingsScreenStyles';
@@ -9,23 +10,22 @@ import getStyles from '../styles/SettingsScreenStyles';
 const SettingsScreen = props => {
 
     const currentTheme = useTheme();
-
     const {styles, colors} = useThemedValues(getStyles);
     const changeTheme = useChangeTheme();
+    const themeOptions = useThemeOptions();
 
-    const themeOptions = [
-        {
-            key: ThemeModes.dark,
-            title: 'Karanlık',
-        },
-        {
-            key: ThemeModes.light,
-            title: 'Aydınlık',
-        },
-    ]
+    const currentLocale = useLocale();
+    const loc = useLocalization();
+    const localeOptions = useLocaleOptions();
+    const changeLocale = useChangeLocale();
+
 
     const _onSelect_Theme = (key) => {
         changeTheme(key);
+    }
+
+    const _onSelect_Locale = (key) => {
+        changeLocale(key);
     }
 
     return (
@@ -36,13 +36,19 @@ const SettingsScreen = props => {
                 <View style={styles.menusContainer}>
                     <OptionMenu 
                         options={themeOptions}
-                        menuTitle={'Renk Teması'}
+                        menuTitle={loc.t(tn.colorTheme)}
                         selectedOptionKey={currentTheme}
                         onSelect={_onSelect_Theme}
                     />
+                    <OptionMenu 
+                        options={localeOptions}
+                        menuTitle={loc.t(tn.language)}
+                        selectedOptionKey={currentLocale}
+                        onSelect={_onSelect_Locale}
+                    />
                 </View>
                 <TouchableOpacity style={styles.signOutTouchable}>
-                    <Text style={styles.signOutText}>Çıkış Yap</Text>
+                    <Text style={styles.signOutText}>{loc.t(tn.signOut)}</Text>
                 </TouchableOpacity>
             </SafeAreaView>
         </View>
