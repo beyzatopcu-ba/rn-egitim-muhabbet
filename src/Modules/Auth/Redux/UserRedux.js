@@ -1,10 +1,12 @@
+export const USER_NAMESPACE = 'auth';
+
 // Initial State
 const INITIAL_STATE = {
     user: null,
 };
 
 // Selectors
-export const userSelector = state => state.auth.user;
+export const userSelector = state => state[USER_NAMESPACE].user;
 
 // Action Types
 export const SIGN_UP_REQUEST = "user/sign_up_request";

@@ -19,14 +19,11 @@ const AuthScreen = props => {
 
     const _onPress_SignUp = () => {
 
-        if (email.length === 0 || password.length === 0 || passwordConfirm.length === 0 || name.length === 0) {
+        if (email.length === 0 || password.length === 0 || name.length === 0) {
             Alert.alert('Uyarı', 'Lütfen tüm alanları doldurun.');
         }
-        else if (password !== passwordConfirm) {
-            Alert.alert('Uyarı', 'Şifreler uyuşmuyor. Lütfen kontrol edin.');
-        }
         else {
-            //dispatch(signUpRequest(email, password, name));
+            dispatch(signUpRequest(email, password, name));
         }
     }
 
@@ -35,7 +32,7 @@ const AuthScreen = props => {
             Alert.alert('Uyarı', 'Lütfen tüm alanları doldurun.');
         }
         else {
-            //dispatch(signInRequest(email, password))
+            dispatch(signInRequest(email, password))
         }
     }
 

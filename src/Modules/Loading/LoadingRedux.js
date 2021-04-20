@@ -1,10 +1,12 @@
+export const LOADING_NAMESPACE = 'loading';
+
 // Initial State
 const INITIAL_STATE = {
     isLoading: false,
 };
 
 // Selectors
-export const isLoadingSelector = state => state.loading.isLoading;
+export const isLoadingSelector = state => state[LOADING_NAMESPACE].isLoading;
 
 // Action Types
 const SET_IS_LOADING = "loading/set_is_loading";
