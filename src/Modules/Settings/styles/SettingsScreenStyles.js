@@ -9,13 +9,16 @@ export default Colors => StyleSheet.create({
         padding: Metrics.marginHorizontal,
     },
     nameText: {
+        fontFamily: Fonts.type.bold,
         fontSize: Fonts.size(18),
         marginBottom: Metrics.width * 0.01,
         color: Colors[cn.settings.usernameText],
     },
     emailText: {
+        fontFamily: Fonts.type.regular,
         fontSize: Fonts.size(16),
         color: Colors[cn.settings.userEmailText],
+        marginBottom: Metrics.width * 0.05,
     },
     menusContainer: {
         flexGrow: 1,

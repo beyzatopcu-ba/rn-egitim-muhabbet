@@ -10,8 +10,7 @@ const SettingsScreen = props => {
 
     const currentTheme = useTheme();
 
-    const params = {};
-    const {styles, colors} = useThemedValues(getStyles, params);
+    const {styles, colors} = useThemedValues(getStyles);
     const changeTheme = useChangeTheme();
 
     const themeOptions = [

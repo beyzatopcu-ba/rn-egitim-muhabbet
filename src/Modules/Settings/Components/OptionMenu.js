@@ -3,13 +3,13 @@ import { Text, TouchableOpacity, View } from 'react-native';
 
 import Icon from '../../../Components/Icon';
 import { Svgs } from '../../../StylingConstants';
-import { cn, useThemedColors } from '../../Theming';
+import { cn, useThemedColors, useThemedValues } from '../../Theming';
 
-import styles from '../styles/OptionMenuStyles';
+import getStyles from '../styles/OptionMenuStyles';
 
 const OptionMenu = props => {
 
-    const colors = useThemedColors();
+    const {colors, styles} = useThemedValues(getStyles);
 
     const renderOptions = () => {
         return props.options.map((option, index) => {
@@ -23,20 +23,20 @@ const OptionMenu = props => {
             }
 
             return (
-                <TouchableOpacity key={option.key} style={{flexDirection: 'row'}} 
+                <TouchableOpacity key={option.key} style={styles.optionTouchable} 
                     onPress={() => props.onSelect(option.key)}>
-                    <View style={{width: 20, height: 20}}>
+                    <View style={styles.iconContainer}>
                         <Icon iconStyle={iconStyle} svg={svg}/>
                     </View>
-                    <Text>{option.title}</Text>
+                    <Text style={styles.optionTitleText}>{option.title}</Text>
                 </TouchableOpacity>
             )
         })
     }
 
     return (
-        <View>
-            <Text>{props.menuTitle}</Text>
+        <View style={styles.container}>
+            <Text style={styles.titleText}>{props.menuTitle}</Text>
             {renderOptions()}
         </View>
     );
