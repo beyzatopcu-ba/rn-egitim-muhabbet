@@ -1,0 +1,7 @@
+1. LoadingRedux'ı reducer'lara ekliyosunuz
+2. LoadingManager'ı App.js'e ekliyosunuz 
+3. UserSaga'yı ve UserRedux'ı ilgili yerlere ekliyosunuz
+4. MainNavigation'da user bilgisinin redux'tan gelmesini sağlıyosunuz
+
+5. Settings'de kullanıcının isim ve email'i redux'tan gelsin (select)
+6. Settings'de sign out butonuna tıklanınca çıkış yapılsın (dispatch)

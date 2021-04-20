@@ -5,7 +5,7 @@ import AppNavigation from './AppNavigation';
 import AuthNavigation from './AuthNavigation';
 
 const MainNavigation = (props) => {
-    const user = {};
+    const user = null;
     return (
         <>
             <StatusBar barStyle={"light-content"}/>
