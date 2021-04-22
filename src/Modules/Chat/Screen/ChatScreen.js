@@ -6,6 +6,7 @@ import { Metrics, Svgs } from '../../../StylingConstants';
 
 import { tn, useLocalization } from '../../Localization';
 import { cn, useThemedValues } from '../../Theming';
+import SendMessage from '../Components/SendMessage';
 import getStyles from '../styles/ChatScreenStyles';
 
 const ChatScreen = props => {
@@ -22,18 +23,7 @@ const ChatScreen = props => {
             >
                 <TouchableOpacity style={styles.container} activeOpacity={1} onPress={Keyboard.dismiss}>
                     <View style={styles.chatContainer}></View>
-                    <View style={styles.messageAreaContainer}>
-                        <View style={styles.inputContainer}>
-                            <TextInput
-                                multiline
-                                placeholder={loc.t(tn.startWriting)}
-                                placeholderTextColor={colors[cn.chat.messageInputPlaceholder]}
-                                style={styles.input} />
-                        </View>
-                        <View style={styles.iconContainer}>
-                            <Icon svg={Svgs.Send} iconStyle={{ color: colors[cn.chat.sendIcon] }} />
-                        </View>
-                    </View>
+                    <SendMessage />
                 </TouchableOpacity>
             </KeyboardAvoidingView>
         </SafeAreaView>
