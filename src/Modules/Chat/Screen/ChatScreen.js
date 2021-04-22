@@ -1,5 +1,5 @@
 import React from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import Icon from '../../../Components/Icon';
 import { Metrics, Svgs } from '../../../StylingConstants';
@@ -9,20 +9,54 @@ import { cn, useThemedValues } from '../../Theming';
 import SendMessage from '../Components/SendMessage';
 import getStyles from '../styles/ChatScreenStyles';
 
+import ChatData from '../DummyChatData';
+import DateSeparator from '../Components/DateSeparator';
+import IncomingMessageBox from '../Components/IncomingMessageBox';
+import SentMessageBox from '../Components/SentMessageBox';
+
+const currentUserId = 2;
 const ChatScreen = props => {
 
     const { styles, colors } = useThemedValues(getStyles);
     const loc = useLocalization();
 
+    const _renderChatItem = ({item}) => {
+        // Tarih ayracı
+        if (item.date) {
+            return (
+                <DateSeparator dateText={item.date} />
+            )
+        }
+        // Gelen mesaj
+        if (item.senderId === currentUserId) {
+            return (
+                <IncomingMessageBox messageData={item}/>
+            )
+        }
+
+        return (
+            <SentMessageBox messageData={item}/>
+        )
+    }
+
     return (
         <SafeAreaView style={styles.safeArea}>
-            <KeyboardAvoidingView 
-            style={{flex:1}} 
-            behavior={Platform.OS === 'ios' ? 'padding' : null}
-            keyboardVerticalOffset={Metrics.navBarHeight * 1.6}
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === 'ios' ? 'padding' : null}
+                keyboardVerticalOffset={Metrics.navBarHeight * 1.6}
             >
                 <TouchableOpacity style={styles.container} activeOpacity={1} onPress={Keyboard.dismiss}>
-                    <View style={styles.chatContainer}></View>
+                    <View style={styles.chatContainer}>
+                        <FlatList 
+                            style={{flexGrow: 0}}
+                            contentContainerStyle={{backgroundColor: 'pink'}}
+                            data={ChatData}
+                            renderItem={_renderChatItem}
+                            keyExtractor={(item, index) => index}
+                            inverted
+                        />
+                    </View>
                     <SendMessage />
                 </TouchableOpacity>
             </KeyboardAvoidingView>

@@ -9,10 +9,8 @@ export default Colors => StyleSheet.create({
     },
     container: {
         flex: 1,
-        paddingHorizontal: Metrics.marginHorizontal,
     },
     chatContainer: {
         flexGrow: 1,
-        backgroundColor: 'pink'
     },
 });
