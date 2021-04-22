@@ -6,6 +6,7 @@ import {
     Text,
     View,
     TouchableOpacity,
+    Keyboard,
 } from 'react-native';
 
 import AuthInput from '../Components/AuthInput';
@@ -31,7 +32,11 @@ const AuthScreen = props => {
     return (
         <SafeAreaView style={styles.safeArea}>
             <KeyboardAvoidingView style={styles.keyboardAvoiding} behavior={'padding'} keyboardVerticalOffset={0}>
-                <View style={styles.container}>
+                <TouchableOpacity 
+                    style={styles.container}
+                    activeOpacity={1}
+                    onPress={Keyboard.dismiss}
+                    >
                     <View style={styles.appLogoContainer}>
                         <Image source={Images.appLogoLight} style={styles.image} />
                     </View>
@@ -78,7 +83,7 @@ const AuthScreen = props => {
                     <View style={styles.appNameContainer}>
                         <Text style={styles.appNameText}>MUHABBET</Text>
                     </View>
-                </View>
+                </TouchableOpacity>
             </KeyboardAvoidingView>
         </SafeAreaView>
     );
