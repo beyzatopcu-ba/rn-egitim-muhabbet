@@ -1,11 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import { useThemedStyles } from '../../Theming';
 
-import styles from '../styles/DateSeparatorStyles';
+import getStyles from '../styles/DateSeparatorStyles';
 
 const DateSeparator = props => {
+    const styles = useThemedStyles(getStyles);
     return (
-        <Text>{props.dateText}</Text>
+        <View style={styles.container}>
+            <View style={styles.line} />
+            <View style={styles.textContainer}>
+                <Text style={styles.text}>{props.dateText}</Text>
+            </View>
+        </View>
     );
 };
 
