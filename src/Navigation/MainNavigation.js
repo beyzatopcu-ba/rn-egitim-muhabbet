@@ -3,18 +3,20 @@ import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigation from './AppNavigation';
 import AuthNavigation from './AuthNavigation';
+import { useSelector } from 'react-redux';
+import { userSelector } from '../Modules/Auth';
 
 const MainNavigation = (props) => {
-    const user = null;
+    const loggedInUser = useSelector(userSelector);
     return (
         <>
             <StatusBar barStyle={"light-content"}/>
             <NavigationContainer>
                 {
-                    user === null ?
-                    <AuthNavigation />
-                    :
+                    loggedInUser ?
                     <AppNavigation />
+                    :
+                    <AuthNavigation/>
                 }
             </NavigationContainer>
         </>

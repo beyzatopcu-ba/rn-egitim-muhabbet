@@ -1,2 +1,2 @@
-export { userReducer, USER_NAMESPACE, userSelector } from './Redux/UserRedux';
+export { userReducer, USER_NAMESPACE, userSelector, signOutRequest } from './Redux/UserRedux';
 export { userSagas } from './Redux/UserSaga';

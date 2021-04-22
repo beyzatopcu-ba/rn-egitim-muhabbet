@@ -1,9 +1,11 @@
 import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useChangeTheme, useTheme, useThemedValues, useThemeOptions } from '../../Theming';
 import { useLocalization, tn, useLocaleOptions, useLocale, useChangeLocale } from '../../Localization';
 import OptionMenu from '../Components/OptionMenu';
+import { userSelector, signOutRequest } from '../../Auth';
 
 import getStyles from '../styles/SettingsScreenStyles';
 
@@ -28,11 +30,22 @@ const SettingsScreen = props => {
         changeLocale(key);
     }
 
+    const dispatch = useDispatch();
+    const _onPress_SignOut = () => {
+        dispatch(signOutRequest());
+    }
+
+    const user = useSelector(userSelector);
+
     return (
         <View style={styles.container}>
             <SafeAreaView style={{flex: 1}}>
-                <Text style={styles.nameText}>Beyza Topçu</Text>
-                <Text style={styles.emailText}>beyzatopcu@mail.com</Text>
+                <Text style={styles.nameText}>
+                    {user.displayName}
+                </Text>
+                <Text style={styles.emailText}>
+                    {user.email}
+                </Text>
                 <View style={styles.menusContainer}>
                     <OptionMenu 
                         options={themeOptions}
@@ -47,7 +60,7 @@ const SettingsScreen = props => {
                         onSelect={_onSelect_Locale}
                     />
                 </View>
-                <TouchableOpacity style={styles.signOutTouchable}>
+                <TouchableOpacity style={styles.signOutTouchable} onPress={_onPress_SignOut}>
                     <Text style={styles.signOutText}>{loc.t(tn.signOut)}</Text>
                 </TouchableOpacity>
             </SafeAreaView>
