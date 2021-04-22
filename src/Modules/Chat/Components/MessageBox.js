@@ -1,11 +1,32 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import { useThemedStyles } from '../../Theming';
 
-import styles from '../styles/MessageBoxStyles';
+import getStyles from '../styles/MessageBoxStyles';
 
 const MessageBox = props => {
+    const {
+        message,
+        time,
+        senderColor,
+        backgroundColor,
+        messageTextColor,
+        timeTextColor,
+        isMe,
+    } = props;
+
+    const styles = useThemedStyles(getStyles, props);
+    
     return (
-        <Text>{props.message}</Text>
+        <View style={styles.container}>
+            <View style={styles.boxContainer}>
+                <Text style={styles.messageText} selectable >
+                    {message}
+                    <Text selectable={false} style={{color: 'transparent'}}>000000</Text>
+                </Text>
+                <Text style={styles.timeText}>{time}</Text>
+            </View>
+        </View>
     );
 };
 

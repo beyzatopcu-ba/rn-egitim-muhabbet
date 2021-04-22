@@ -1,13 +1,23 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import MessageBox from './MessageBox';
 
 import styles from '../styles/SentMessageBoxStyles';
 
 const SentMessageBox = props => {
-    const {message} = props.messageData;
+    const { message, time, color } = props.messageData;
     return (
-        <MessageBox message={'giden: ' + message}/>
+        <View style={styles.container}>
+            <MessageBox
+                message={message}
+                time={time}
+                senderColor={'transparent'}
+                backgroundColor={"orange"}
+                messageTextColor={"white"}
+                timeTextColor={"grey"}
+                isMe={true}
+            />
+        </View>
     );
 };
 

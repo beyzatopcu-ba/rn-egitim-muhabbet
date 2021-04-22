@@ -30,12 +30,12 @@ const ChatScreen = props => {
         // Gelen mesaj
         if (item.senderId === currentUserId) {
             return (
-                <IncomingMessageBox messageData={item}/>
+                <SentMessageBox messageData={item}/>
             )
         }
 
         return (
-            <SentMessageBox messageData={item}/>
+            <IncomingMessageBox messageData={item}/>
         )
     }
 
@@ -50,7 +50,6 @@ const ChatScreen = props => {
                     <View style={styles.chatContainer}>
                         <FlatList 
                             style={{flexGrow: 0}}
-                            contentContainerStyle={{backgroundColor: 'pink'}}
                             data={ChatData}
                             renderItem={_renderChatItem}
                             keyExtractor={(item, index) => index}
