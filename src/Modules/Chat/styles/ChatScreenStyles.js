@@ -12,5 +12,9 @@ export default Colors => StyleSheet.create({
     },
     chatContainer: {
         flexGrow: 1,
+        flexShrink: 1,
+    },
+    flatList: {
+
     },
 });

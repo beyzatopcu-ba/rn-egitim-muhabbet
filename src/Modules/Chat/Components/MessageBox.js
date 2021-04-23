@@ -20,7 +20,7 @@ const MessageBox = props => {
     return (
         <View style={styles.container}>
             <View style={styles.boxContainer}>
-                <Text style={styles.messageText} selectable >
+                <Text style={styles.messageText} selectable selectionColor='pink'>
                     {message}
                     <Text selectable={false} style={{color: 'transparent'}}>000000</Text>
                 </Text>

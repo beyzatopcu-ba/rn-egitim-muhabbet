@@ -23,5 +23,5 @@ export default (Colors, params) => StyleSheet.create({
         right: Metrics.width * 0.015,
         bottom: Metrics.width * 0.015,
         color: params.timeTextColor,
-    }
+    },
 });

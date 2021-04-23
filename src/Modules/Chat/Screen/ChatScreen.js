@@ -46,7 +46,7 @@ const ChatScreen = props => {
                 behavior={Platform.OS === 'ios' ? 'padding' : null}
                 keyboardVerticalOffset={Metrics.navBarHeight * 1.6}
             >
-                <TouchableOpacity style={styles.container} activeOpacity={1} onPress={Keyboard.dismiss}>
+                <View style={styles.container} activeOpacity={1} onPress={Keyboard.dismiss}>
                     <View style={styles.chatContainer}>
                         <FlatList 
                             style={{flexGrow: 0}}
@@ -57,7 +57,7 @@ const ChatScreen = props => {
                         />
                     </View>
                     <SendMessage />
-                </TouchableOpacity>
+                </View>
             </KeyboardAvoidingView>
         </SafeAreaView>
     );

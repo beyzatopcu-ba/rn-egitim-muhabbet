@@ -6,7 +6,8 @@ export default Colors => StyleSheet.create({
     messageAreaContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingTop: Metrics.width * 0.05,
+        paddingTop: Metrics.width * 0.02,
+        paddingHorizontal: Metrics.marginHorizontal,
     },
     inputContainer: {
         flexGrow: 1,
@@ -32,5 +33,28 @@ export default Colors => StyleSheet.create({
         width: Metrics.width * 0.1,
         height: undefined,
         aspectRatio: 1,
-    }
+    },
+    transitionsContainer: {
+        position: 'absolute',
+        top: Metrics.width * 0.02 * -3,
+    },
+    linearGradient: {
+        height: Metrics.width * 0.02 * 3,
+        width: Metrics.width,
+    },
+    transition1: {
+        width: Metrics.width,
+        height: Metrics.width * 0.02,
+        backgroundColor: Colors[cn.chat.transition1]
+    },
+    transition2: {
+        width: Metrics.width,
+        height: Metrics.width * 0.02,
+        backgroundColor: Colors[cn.chat.transition2]
+    },
+    transition3: {
+        width: Metrics.width,
+        height: Metrics.width * 0.02,
+        backgroundColor: Colors[cn.chat.transition3]
+    },
 });
