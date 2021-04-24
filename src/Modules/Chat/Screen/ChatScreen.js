@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import Icon from '../../../Components/Icon';
@@ -13,12 +13,26 @@ import ChatData from '../DummyChatData';
 import DateSeparator from '../Components/DateSeparator';
 import IncomingMessageBox from '../Components/IncomingMessageBox';
 import SentMessageBox from '../Components/SentMessageBox';
+import { getData } from '../API/Firebase';
+import { createChatDataForRender } from '../Utils/RenderChatUtils';
+import { useLocaleDateFormat } from '../../Localization/LocalizationHooks';
 
 const currentUserId = 2;
 const ChatScreen = props => {
 
     const { styles, colors } = useThemedValues(getStyles);
     const loc = useLocalization();
+    
+    const [ chatList, setChatList ] = useState([]);
+    const localeDateFormat = useLocaleDateFormat();
+    useEffect(() => {
+        // data'yı getir
+        const chatList = getData();
+        // render edilebilecek formata çevirttir
+        const chatDataForRender = createChatDataForRender(chatList, localeDateFormat);
+        // state'a at
+        setChatList(chatDataForRender);
+    }, []);
 
     const _renderChatItem = ({item}) => {
         // Tarih ayracı
@@ -50,7 +64,7 @@ const ChatScreen = props => {
                     <View style={styles.chatContainer}>
                         <FlatList 
                             style={{flexGrow: 0}}
-                            data={ChatData}
+                            data={ChatData} // *** BİTİRİNCE YENİ LİSTEYİ VERMEYİ UNUTMA *** //
                             renderItem={_renderChatItem}
                             keyExtractor={(item, index) => index}
                             inverted

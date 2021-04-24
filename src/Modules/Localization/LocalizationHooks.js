@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {LocalizationActionCreators, LocalizationSelectors} from './LocalizationRedux';
 import I18n from './I18nConfig';
-import { Locales } from "./LocalizationConstants";
+import { LocaleDateFormats, Locales } from "./LocalizationConstants";
 import { tn } from "./Texts";
 
 export function useLocaleOptions() {
@@ -46,4 +46,9 @@ export function useChangeLocale() {
     return (locale) => {
         dispatch(LocalizationActionCreators.changeLocale(locale));
     };
+}
+
+export function useLocaleDateFormat() {
+    const locale = useLocale();
+    return LocaleDateFormats[locale];
 }
