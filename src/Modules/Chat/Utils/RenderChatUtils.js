@@ -1,3 +1,4 @@
+import { assignColorsToSenders } from './SenderColors';
 
 // Gün bakımından mesajları karşılaştırır
 const compareChatDates = (chat1, chat2) => {
@@ -62,6 +63,8 @@ const getDateSeparatorIfNecessary = (chat, nextChat, localeDateFormat) => {
 
 export const createChatDataForRender = (chatList, localeDateFormat) => {
     chatList.reverse();
+    assignColorsToSenders(chatList);
+
     let dataList = [];
 
     let chat;
