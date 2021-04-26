@@ -76,9 +76,9 @@ const getSenderColor = senderId => {
     return senderColor;
 }
 
-export const assignColorsToSenders = (chatList, currentUserId) => {
+export const assignColorsToSenders = (chatList) => {
     for (let chat of chatList) {
-        if (chat.senderId !== currentUserId) {
+        if (!chat.isMe) {
             chat.color = getSenderColor(chat.senderId);
         }
     }

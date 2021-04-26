@@ -26,12 +26,18 @@ const ChatScreen = props => {
     const [ chatList, setChatList ] = useState([]);
     const localeDateFormat = useLocaleDateFormat();
     useEffect(() => {
+        getData(chatList => {
+            const chatDataForRender = createChatDataForRender(chatList, localeDateFormat);
+            setChatList(chatDataForRender);
+        })
+        /*
         // data'yı getir
         const chatList = getData();
         // render edilebilecek formata çevirttir
         const chatDataForRender = createChatDataForRender(chatList, localeDateFormat);
         // state'a at
         setChatList(chatDataForRender);
+        */
     }, []);
 
     const _renderChatItem = ({item}) => {
