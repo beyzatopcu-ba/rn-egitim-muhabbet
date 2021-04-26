@@ -2,6 +2,7 @@ import { fork, takeEvery, call, put, all } from "@redux-saga/core/effects";
 import { setUserAC, SIGN_IN_REQUEST, SIGN_OUT_REQUEST, SIGN_UP_REQUEST } from './UserRedux';
 import { getCurrentUser, signIn, signOut, signUp, updateUser } from '../API/Firebase';
 import { setIsLoadingAC } from "../../Loading/LoadingRedux";
+import { subscribeToFCM, unsubscribeFromFCM } from '../../PushNotification'
 
 function* workerSignIn(action) {
     const {email, password} = action.payload;
@@ -15,6 +16,7 @@ function* workerSignIn(action) {
         const currentUser = getCurrentUser();
         yield put(setUserAC(currentUser));
 
+        subscribeToFCM();
         // yield spawn(call(sendReport));
 
     } catch (error) {
@@ -39,6 +41,8 @@ function* signUpAndUpdateUser(email, password, displayName) {
         const currentUser = getCurrentUser();
         // Şu anki kullanıcıyı redux'a verdik
         yield put(setUserAC(currentUser));
+
+        subscribeToFCM();
     } catch(error) {
         
     }
@@ -76,6 +80,8 @@ function* workerSignOut() {
         yield put(setUserAC(null));
 
         yield put(setIsLoadingAC(false));
+
+        unsubscribeFromFCM();
 
     } catch (error) {
         console.log('ERROR', error);
