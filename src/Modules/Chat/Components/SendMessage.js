@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, TextInput } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { View, TextInput, TouchableOpacity } from 'react-native';
 import Icon from '../../../Components/Icon';
 import { Svgs } from '../../../StylingConstants';
 import { tn, useLocalization } from '../../Localization';
@@ -13,15 +13,18 @@ import LinearGradient from 'react-native-linear-gradient';
 import getStyles from '../styles/SendMessageStyles';
 
 const SendMessage = props => {
+
+    const [inputText, setInputText] = useState('');
+
     const { styles, colors } = useThemedValues(getStyles);
     const loc = useLocalization();
+
+    const _onPress_Send = () => {
+        setInputText('');
+        props.onPress_Send(inputText)
+    }
+
     return (
-        
-            // <LinearGradient
-            //     style={{ height: 20, width: 300 }}
-        //     locations={[0, 0.5, 0.6]}
-        //     colors={['#4c669f', '#3b5998', '#192f6a']}
-        // /> 
 
         < View style={styles.messageAreaContainer} >
             <View style={styles.transitionsContainer}>
@@ -37,14 +40,16 @@ const SendMessage = props => {
             </View>
             <View style={styles.inputContainer}>
                 <TextInput
+                    value={inputText}
+                    onChangeText={setInputText}
                     multiline
                     placeholder={loc.t(tn.startWriting)}
                     placeholderTextColor={colors[cn.chat.messageInputPlaceholder]}
                     style={styles.input} />
             </View>
-            <View style={styles.iconContainer}>
+            <TouchableOpacity style={styles.iconContainer} onPress={_onPress_Send}>
                 <Icon svg={Svgs.Send} iconStyle={{ color: colors[cn.chat.sendIcon] }} />
-            </View>
+            </TouchableOpacity>
         </View>
         
     );

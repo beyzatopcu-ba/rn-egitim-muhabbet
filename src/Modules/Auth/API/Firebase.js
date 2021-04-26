@@ -26,3 +26,7 @@ export const updateUser = async (displayName) => {
 export const getCurrentUser = () => {
     return auth.currentUser;
 }
+
+export const getCurrentUserId = () => {
+    return auth.currentUser.uid;
+}

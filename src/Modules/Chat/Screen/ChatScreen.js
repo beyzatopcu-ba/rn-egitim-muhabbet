@@ -13,11 +13,10 @@ import ChatData from '../DummyChatData';
 import DateSeparator from '../Components/DateSeparator';
 import IncomingMessageBox from '../Components/IncomingMessageBox';
 import SentMessageBox from '../Components/SentMessageBox';
-import { getData } from '../API/Firebase';
+import { getData, sendMessage } from '../API/Firebase';
 import { createChatDataForRender } from '../Utils/RenderChatUtils';
 import { useLocaleDateFormat } from '../../Localization/LocalizationHooks';
 
-const currentUserId = 2;
 const ChatScreen = props => {
 
     const { styles, colors } = useThemedValues(getStyles);
@@ -30,15 +29,11 @@ const ChatScreen = props => {
             const chatDataForRender = createChatDataForRender(chatList, localeDateFormat);
             setChatList(chatDataForRender);
         })
-        /*
-        // data'yı getir
-        const chatList = getData();
-        // render edilebilecek formata çevirttir
-        const chatDataForRender = createChatDataForRender(chatList, localeDateFormat);
-        // state'a at
-        setChatList(chatDataForRender);
-        */
     }, []);
+
+    const _onPress_SendMessage = message => {
+        sendMessage(message);
+    }
 
     const _renderChatItem = ({item}) => {
         // Tarih ayracı
@@ -48,7 +43,7 @@ const ChatScreen = props => {
             )
         }
         // Gelen mesaj
-        if (item.senderId === currentUserId) {
+        if (item.isMe) {
             return (
                 <SentMessageBox messageData={item}/>
             )
@@ -81,7 +76,7 @@ const ChatScreen = props => {
                             ListHeaderComponent={ListHeaderComponent}
                         />
                     </View>
-                    <SendMessage />
+                    <SendMessage onPress_Send={_onPress_SendMessage}/>
                 </View>
             </KeyboardAvoidingView>
         </SafeAreaView>
