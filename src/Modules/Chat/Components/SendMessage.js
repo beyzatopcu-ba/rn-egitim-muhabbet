@@ -20,6 +20,7 @@ const SendMessage = props => {
     const loc = useLocalization();
 
     const _onPress_Send = () => {
+        if (inputText.length === 0) return;
         setInputText('');
         props.onPress_Send(inputText)
     }

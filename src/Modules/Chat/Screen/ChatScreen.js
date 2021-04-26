@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, Keyboard, KeyboardAvoidingView, LayoutAnimation, Platform, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import Icon from '../../../Components/Icon';
 import { Metrics, Svgs } from '../../../StylingConstants';
@@ -27,9 +27,26 @@ const ChatScreen = props => {
     useEffect(() => {
         getData(chatList => {
             const chatDataForRender = createChatDataForRender(chatList, localeDateFormat);
+            configureNewMessageAnimation();
             setChatList(chatDataForRender);
         })
     }, []);
+
+    const configureNewMessageAnimation = () => {
+        LayoutAnimation.configureNext({
+            create: {
+                delay: 50,
+                duration: 200,
+                type: LayoutAnimation.Types.easeInEaseOut,
+                property: LayoutAnimation.Properties.opacity,
+            },
+            update: {
+                duration: 150,
+                type: LayoutAnimation.Types.easeInEaseOut,
+                property: LayoutAnimation.Properties.opacity,
+            },
+        })
+    }
 
     const _onPress_SendMessage = message => {
         sendMessage(message);
@@ -71,7 +88,7 @@ const ChatScreen = props => {
                             style={{flexGrow: 0}}
                             data={chatList}
                             renderItem={_renderChatItem}
-                            keyExtractor={(item, index) => index}
+                            keyExtractor={(item, index) => item.date ? item.date : item.id }
                             inverted
                             ListHeaderComponent={ListHeaderComponent}
                         />
