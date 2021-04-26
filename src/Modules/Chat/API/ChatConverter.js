@@ -25,8 +25,40 @@ const sortByDate = (chatList) => {
     })
 }
 
+const convertSingleChat = (chat, currentUserId) => {
+    let dateMoment = getMomentDate(chat.date, chat.time);
+    let convertedChat = {
+        id: chat.id,
+        senderId: chat.senderId,
+        senderName: chat.senderName,
+        message: chat.message,
+        time: getTime(dateMoment),
+        color: chat.color,
+        dateMoment,
+        isMe: chat.senderId === currentUserId,
+    };
+
+    return convertedChat;
+}
+
 export const convertChatList = (chatList, currentUserId) => {
-    // YAPILACAK
-    return [];
+
+    if (chatList?.length === 0) {
+        return [];
+    }
+
+    let convertedChatList = [];
+
+    let chat;
+    let convertedChat;
+    for (let chatKey in chatList) {
+        chat = chatList[chatKey];
+        convertedChat = convertSingleChat(chat, currentUserId);
+        convertedChatList.push(convertedChat);
+    }
+
+    sortByDate(convertedChatList);
+
+    return convertedChatList;
 }
 
