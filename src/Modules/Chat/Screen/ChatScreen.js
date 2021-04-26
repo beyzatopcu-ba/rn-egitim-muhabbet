@@ -68,7 +68,7 @@ const ChatScreen = props => {
                     <View style={styles.chatContainer}>
                         <FlatList 
                             style={{flexGrow: 0}}
-                            data={ChatData} // *** BİTİRİNCE YENİ LİSTEYİ VERMEYİ UNUTMA *** //
+                            data={chatList}
                             renderItem={_renderChatItem}
                             keyExtractor={(item, index) => index}
                             inverted
