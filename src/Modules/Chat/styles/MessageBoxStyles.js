@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Metrics } from '../../../StylingConstants';
+import { Fonts, Metrics } from '../../../StylingConstants';
 
 export default (Colors, params) => StyleSheet.create({
     container: {
@@ -23,5 +23,7 @@ export default (Colors, params) => StyleSheet.create({
         right: Metrics.width * 0.015,
         bottom: Metrics.width * 0.015,
         color: params.timeTextColor,
+        fontFamily: Fonts.type.regular,
+        fontSize: Fonts.size(10),
     },
 });

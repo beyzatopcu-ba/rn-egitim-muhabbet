@@ -28,6 +28,7 @@ export default Colors => StyleSheet.create({
         color: Colors[cn.chat.messageInputText],
         fontFamily: Fonts.type.medium,
         fontSize: Fonts.size(16),
+        paddingVertical: 0,
     },
     iconContainer: {
         width: Metrics.width * 0.1,

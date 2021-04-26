@@ -17,4 +17,8 @@ export default Colors => StyleSheet.create({
     flatList: {
 
     },
+    flatListPadding: {
+        width: Metrics.width,
+        height: Metrics.width * 0.05,
+    }
 });

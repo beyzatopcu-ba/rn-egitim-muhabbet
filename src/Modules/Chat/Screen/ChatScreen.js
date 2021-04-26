@@ -53,6 +53,10 @@ const ChatScreen = props => {
         )
     }
 
+    const ListHeaderComponent = () => {
+        return <View style={styles.flatListPadding}/>
+    }
+
     return (
         <SafeAreaView style={styles.safeArea}>
             <KeyboardAvoidingView
@@ -68,6 +72,7 @@ const ChatScreen = props => {
                             renderItem={_renderChatItem}
                             keyExtractor={(item, index) => index}
                             inverted
+                            ListHeaderComponent={ListHeaderComponent}
                         />
                     </View>
                     <SendMessage />

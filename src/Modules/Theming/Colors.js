@@ -119,7 +119,7 @@ export const darkColors = {
     [chat.sendIcon]: constantColors.mainColor1,
     [chat.transition1]: toRGBA(constantColors.greys[1], 80),
     [chat.transition2]: toRGBA(constantColors.greys[1], 50),
-    [chat.transition3]: toRGBA(constantColors.greys[1], 20),
+    [chat.transition3]: toRGBA(constantColors.greys[1], 10),
     // settings
     [settings.background]: constantColors.greys[1],
     [settings.usernameText]: constantColors.white,

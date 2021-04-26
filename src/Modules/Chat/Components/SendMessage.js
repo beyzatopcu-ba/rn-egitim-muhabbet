@@ -27,10 +27,11 @@ const SendMessage = props => {
             <View style={styles.transitionsContainer}>
                 <LinearGradient
                     style={styles.linearGradient}
-                    locations={[0, 0.9]}
+                    locations={[0, 0.6, 0.9]}
                     colors={[
-                        'rgba(255,255,255,0)',
-                        'white', 
+                        colors[cn.chat.transition3],
+                        colors[cn.chat.transition2],
+                        colors[cn.chat.transition1],
                     ]}
                 />
             </View>

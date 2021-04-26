@@ -7,6 +7,7 @@ import {
     View,
     TouchableOpacity,
     Keyboard,
+    Platform,
 } from 'react-native';
 
 import AuthInput from '../Components/AuthInput';
@@ -31,7 +32,10 @@ const AuthScreen = props => {
 
     return (
         <SafeAreaView style={styles.safeArea}>
-            <KeyboardAvoidingView style={styles.keyboardAvoiding} behavior={'padding'} keyboardVerticalOffset={0}>
+            <KeyboardAvoidingView 
+                style={styles.keyboardAvoiding} 
+                behavior={Platform.OS === 'ios' ? 'padding' : null} 
+                keyboardVerticalOffset={0}>
                 <TouchableOpacity 
                     style={styles.container}
                     activeOpacity={1}

@@ -3,7 +3,7 @@ const timeFormatStandard = "HH:mm";
 const dateFormatStandard = "MM/DD/YYYY";
 
 const getMomentDate = (date, time) => {
-    const dateTimeString = chat.date + '-' + chat.time;
+    const dateTimeString = date + '-' + time;
     const formatString = dateFormatStandard + '-' + timeFormatWithMS;
     return moment(dateTimeString, formatString);
 }
