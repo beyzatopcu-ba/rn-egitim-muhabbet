@@ -24,12 +24,17 @@ const ChatScreen = props => {
     
     const [ chatList, setChatList ] = useState([]);
     const localeDateFormat = useLocaleDateFormat();
+
     useEffect(() => {
-        getData(chatList => {
+        const off = getData(chatList => {
             const chatDataForRender = createChatDataForRender(chatList, localeDateFormat);
             configureNewMessageAnimation();
             setChatList(chatDataForRender);
-        })
+        });
+
+        return async () => {
+            await off();
+        }
     }, []);
 
     const configureNewMessageAnimation = () => {

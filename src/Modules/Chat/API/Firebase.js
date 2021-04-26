@@ -15,7 +15,9 @@ export const getData = (onChatDataRetrieved) => {
             onChatDataRetrieved(convertedChatList);
         });
 
-    return [];
+    return () => {
+        database().ref('/chats').off('value');
+    }
 }
 
 export const sendMessage = message => {
