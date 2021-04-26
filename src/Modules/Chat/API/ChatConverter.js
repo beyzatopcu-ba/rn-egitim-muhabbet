@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const timeFormatWithMS = "HH:mm:ss";
 const timeFormatStandard = "HH:mm";
 const dateFormatStandard = "MM/DD/YYYY";
