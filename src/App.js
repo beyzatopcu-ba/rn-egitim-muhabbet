@@ -14,6 +14,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import createStore from './Redux/CreateStore';
 import MainNavigation from './Navigation/MainNavigation';
 import { LoadingManager} from './Modules/Loading';
+import { NetInfoManager } from './Modules/NetInfo';
 
 
 const { store, persistor } = createStore();
@@ -24,6 +25,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <LoadingManager />
+        <NetInfoManager />
         <MainNavigation />
       </PersistGate>
     </Provider>
