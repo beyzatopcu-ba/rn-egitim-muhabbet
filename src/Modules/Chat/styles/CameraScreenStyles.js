@@ -6,6 +6,10 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
     },
+    camera: {
+        flex: 1,
+        backgroundColor: 'pink'
+    },
     backTouchable: {
         margin: Metrics.marginHorizontal,
         backgroundColor: 'white',
