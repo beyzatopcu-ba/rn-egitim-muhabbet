@@ -2,6 +2,8 @@ import database from '@react-native-firebase/database';
 import moment from 'moment';
 import { getCurrentUser } from '../../Auth';
 import { convertChatList } from "./ChatConverter";
+import { sendNewMessageNotification } from '../../PushNotification';
+
 
 const timeFormatWithMS = "HH:mm:ss";
 const dateFormat = "MM/DD/YYYY";
@@ -20,7 +22,7 @@ export const getData = (onChatDataRetrieved) => {
     }
 }
 
-export const sendMessage = message => {
+export const sendMessage = (message, getLocalizedTitle) => {
     const newChatReference = database()
         .ref('/chats')
         .push();
@@ -35,7 +37,14 @@ export const sendMessage = message => {
         date: now.format(dateFormat),
     };
 
+    console.log(getLocalizedTitle(getCurrentUser().displayName))
+
     newChatReference
         .set(chat)
-        .then(() => console.log('New message sent'));
+        .then(() => {
+            sendNewMessageNotification(
+                message, 
+                getLocalizedTitle(getCurrentUser().displayName)
+            );
+        });
 }

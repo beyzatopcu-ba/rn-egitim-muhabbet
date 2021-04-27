@@ -54,7 +54,9 @@ const ChatScreen = props => {
     }
 
     const _onPress_SendMessage = message => {
-        sendMessage(message);
+        sendMessage(message, (senderName) => {
+            return loc.t(tn.newMessageFrom, { senderName })
+        })
     }
 
     const _renderChatItem = ({item}) => {

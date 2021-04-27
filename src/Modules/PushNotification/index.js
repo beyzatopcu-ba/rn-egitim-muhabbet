@@ -1,1 +1,1 @@
-export { subscribeToFCM, unsubscribeFromFCM } from './API';
+export { subscribeToFCM, unsubscribeFromFCM, sendNewMessageNotification } from './API';

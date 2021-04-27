@@ -15,6 +15,7 @@ export const tn = {
     english: 'english',
     turkish: 'turkish',
     signOut: 'signOut',
+    newMessageFrom: 'newMessageFrom',
 };
 
 export const english = {
@@ -33,6 +34,7 @@ export const english = {
     [tn.english]: 'English',
     [tn.turkish]: 'Türkçe',
     [tn.signOut]: 'Sign Out',
+    [tn.newMessageFrom]: 'New message from %{senderName}',
 }
 
 export const turkish = {
@@ -51,4 +53,5 @@ export const turkish = {
     [tn.english]: 'English',
     [tn.turkish]: 'Türkçe',
     [tn.signOut]: 'Çıkış Yap',
+    [tn.newMessageFrom]: '%{senderName} yeni bir mesaj gönderdi',
 }
