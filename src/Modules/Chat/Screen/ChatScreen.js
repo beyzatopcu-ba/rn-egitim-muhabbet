@@ -100,7 +100,10 @@ const ChatScreen = props => {
                             ListHeaderComponent={ListHeaderComponent}
                         />
                     </View>
-                    <SendMessage onPress_Send={_onPress_SendMessage}/>
+                    <SendMessage 
+                        onPress_Send={_onPress_SendMessage}
+                        onPress_Camera={() => props.navigation.navigate('camera-screen')}
+                        />
                 </View>
             </KeyboardAvoidingView>
         </SafeAreaView>

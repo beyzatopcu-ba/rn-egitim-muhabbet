@@ -23,6 +23,9 @@ export default Colors => StyleSheet.create({
         minHeight: Metrics.width * 0.13,
         marginRight: Metrics.width * 0.05,
         backgroundColor: Colors[cn.chat.messageInputBackground],
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     input: {
         color: Colors[cn.chat.messageInputText],
@@ -58,4 +61,9 @@ export default Colors => StyleSheet.create({
         height: Metrics.width * 0.02,
         backgroundColor: Colors[cn.chat.transition3]
     },
+    cameraIconContainer: {
+        width: Metrics.width * 0.07,
+        height: undefined,
+        aspectRatio: 1,
+    }
 });

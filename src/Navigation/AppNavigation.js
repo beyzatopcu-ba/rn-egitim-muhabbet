@@ -6,6 +6,7 @@ import { Fonts, Metrics } from '../StylingConstants';
 import { cn, useThemedColors } from '../Modules/Theming';
 import { useLocalization, tn } from '../Modules/Localization';
 import SettingsIcon from './SettingsIcon';
+import CameraScreen from '../Modules/Chat/Screen/CameraScreen';
 
 
 const AppStack = createStackNavigator();
@@ -54,6 +55,13 @@ const AppNavigation = () => {
                         marginLeft: Metrics.marginHorizontal * 0.7,
                     },
                     headerTintColor: colors[cn.header.backIcon]
+                }}
+            />
+            <AppStack.Screen
+                name="camera-screen"
+                component={CameraScreen}
+                options={{
+                    headerShown: false,
                 }}
             />
         </AppStack.Navigator>
