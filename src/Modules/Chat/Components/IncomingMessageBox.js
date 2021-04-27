@@ -29,4 +29,14 @@ const IncomingMessageBox = props => {
     );
 };
 
-export default IncomingMessageBox;
+export default React.memo(IncomingMessageBox, (prevProps, nextProps) => {
+    const { message1, time1, color1, hasSenderName1, senderName1 } = prevProps.messageData;
+    const { message2, time2, color2, hasSenderName2, senderName2 } = nextProps.messageData;
+    return (
+        message1 === message2
+        && time1 === time2
+        && color1 === color2
+        && hasSenderName1 === hasSenderName2
+        && senderName1 === senderName2
+    );
+});

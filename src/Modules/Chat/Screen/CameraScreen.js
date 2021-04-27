@@ -26,9 +26,8 @@ const CameraScreen = props => {
     }
 
     const _onPress_Send = () => {
-        setIsPreviewVisible(false);
-        props.navigation.goBack();
         props.route.params.onPress_SendPhoto(base64image);
+        props.navigation.goBack();
     }
 
     return (

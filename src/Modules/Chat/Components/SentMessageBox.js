@@ -23,4 +23,8 @@ const SentMessageBox = props => {
     );
 };
 
-export default SentMessageBox;
+export default React.memo(SentMessageBox, (prevProps, nextProps) => {
+    const { message1, time1, color1 } = prevProps.messageData;
+    const { message2, time2, color2 } = nextProps.messageData;
+    return message1 === message2 && time1 === time2 && color1 === color2;
+});

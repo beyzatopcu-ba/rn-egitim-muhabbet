@@ -26,7 +26,7 @@ export const sendNewMessageNotification = (message, notificationTitle) => {
     axios.post('send', {
         notification: {
             title: notificationTitle,
-            body: message.substr(0, 30),
+            body: message.base64Image ? 'Fotoğraf' : message.substr(0, 30),
         },
         to: '/topics/chat',
     })

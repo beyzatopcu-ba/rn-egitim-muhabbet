@@ -107,6 +107,7 @@ const ChatScreen = props => {
                             keyExtractor={(item, index) => item.date ? item.date : item.id }
                             inverted
                             ListHeaderComponent={ListHeaderComponent}
+                            removeClippedSubviews={true}
                         />
                     </View>
                     <SendMessage 
