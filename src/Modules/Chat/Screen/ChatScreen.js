@@ -59,6 +59,15 @@ const ChatScreen = props => {
         })
     }
 
+    const _onPress_SendPhoto = base64Image => {
+        const message = {
+            base64Image,
+        }
+        sendMessage(message, (senderName) => {
+            return loc.t(tn.newMessageFrom, { senderName })
+        })
+    }
+
     const _renderChatItem = ({item}) => {
         // Tarih ayracı
         if (item.date) {
@@ -102,7 +111,9 @@ const ChatScreen = props => {
                     </View>
                     <SendMessage 
                         onPress_Send={_onPress_SendMessage}
-                        onPress_Camera={() => props.navigation.navigate('camera-screen')}
+                        onPress_Camera={() => props.navigation.navigate('camera-screen', {
+                            onPress_SendPhoto: _onPress_SendPhoto
+                        })}
                         />
                 </View>
             </KeyboardAvoidingView>

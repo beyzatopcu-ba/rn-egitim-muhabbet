@@ -23,6 +23,7 @@ export const getData = (onChatDataRetrieved) => {
 }
 
 export const sendMessage = (message, getLocalizedTitle) => {
+    console.log('sending message')
     const newChatReference = database()
         .ref('/chats')
         .push();

@@ -7,6 +7,7 @@ export default Colors => StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingTop: Metrics.width * 0.02,
+        paddingBottom: Metrics.width * 0.05,
         paddingHorizontal: Metrics.marginHorizontal,
     },
     inputContainer: {
@@ -28,6 +29,7 @@ export default Colors => StyleSheet.create({
         alignItems: 'center',
     },
     input: {
+        flexGrow:1,
         color: Colors[cn.chat.messageInputText],
         fontFamily: Fonts.type.medium,
         fontSize: Fonts.size(16),

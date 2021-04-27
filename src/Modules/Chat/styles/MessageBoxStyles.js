@@ -26,4 +26,11 @@ export default (Colors, params) => StyleSheet.create({
         fontFamily: Fonts.type.regular,
         fontSize: Fonts.size(10),
     },
+    image: {
+        width: Metrics.width * 0.5,
+        height: undefined,
+        aspectRatio: 1,
+        resizeMode: 'contain',
+        marginBottom: Metrics.width * 0.03,
+    },
 });
