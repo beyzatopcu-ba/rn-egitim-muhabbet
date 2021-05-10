@@ -3,6 +3,11 @@ import { Fonts, Metrics } from '../../../StylingConstants';
 
 export default StyleSheet.create({
     container: {
+        width: Metrics.width,
+        height: Metrics.height,
+        position: 'absolute',
+    },
+    map: {
         flex: 1,
     },
     backTouchable: {
@@ -16,6 +21,7 @@ export default StyleSheet.create({
         borderRadius: 1000,
         justifyContent: 'center',
         alignItems: 'center',
+        zIndex: 5,
     },
     backText: {
         fontSize: Fonts.size(50),
@@ -32,6 +38,7 @@ export default StyleSheet.create({
         aspectRatio: 1,
         borderRadius: 1000,
         backgroundColor: 'white',
+        zIndex: 5,
     },
 
 });
