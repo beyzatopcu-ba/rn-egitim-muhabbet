@@ -47,7 +47,11 @@ const SendMessage = props => {
                     placeholder={loc.t(tn.startWriting)}
                     placeholderTextColor={colors[cn.chat.messageInputPlaceholder]}
                     style={styles.input} />
-                <TouchableOpacity style={styles.cameraIconContainer} onPress={props.onPress_Camera}>
+                
+                <TouchableOpacity style={styles.shareIconContainer} onPress={props.onPress_Location}>
+                    <Icon svg={Svgs.LocationPin} iconStyle={{color: 'grey'}}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.shareIconContainer} onPress={props.onPress_Camera}>
                     <Icon svg={Svgs.Camera} iconStyle={{color: 'grey'}}/>
                 </TouchableOpacity>
             </View>

@@ -26,8 +26,9 @@ const CameraScreen = props => {
     }
 
     const _onPress_Send = () => {
-        props.route.params.onPress_SendPhoto(base64image);
-        props.navigation.goBack();
+        props.navigation.navigation("chat-screen", {
+            base64image
+        });
     }
 
     return (

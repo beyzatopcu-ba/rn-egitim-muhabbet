@@ -37,6 +37,18 @@ const ChatScreen = props => {
         }
     }, []);
 
+    useEffect(() => {
+        if (props.route.params?.base64Image) {
+            _sendPhoto(props.route.params?.base64Image);
+        }
+    }, [props.route.params?.base64Image]);
+
+    useEffect(() => {
+        if (props.route.params?.location) {
+            _sendLocation(props.route.params?.location);
+        }
+    }, [props.route.params?.location]);
+
     const configureNewMessageAnimation = () => {
         LayoutAnimation.configureNext({
             create: {
@@ -59,13 +71,17 @@ const ChatScreen = props => {
         })
     }
 
-    const _onPress_SendPhoto = base64Image => {
+    const _sendPhoto = base64Image => {
         const message = {
             base64Image,
         }
         sendMessage(message, (senderName) => {
             return loc.t(tn.newMessageFrom, { senderName })
         })
+    }
+
+    const _sendLocation = location => {
+        // ... konum gönderilecek
     }
 
     const _renderChatItem = ({item}) => {
@@ -112,9 +128,8 @@ const ChatScreen = props => {
                     </View>
                     <SendMessage 
                         onPress_Send={_onPress_SendMessage}
-                        onPress_Camera={() => props.navigation.navigate('camera-screen', {
-                            onPress_SendPhoto: _onPress_SendPhoto
-                        })}
+                        onPress_Camera={() => props.navigation.navigate('camera-screen')}
+                        onPress_Location={() => props.navigation.navigate('map-screen')}
                         />
                 </View>
             </KeyboardAvoidingView>

@@ -7,6 +7,7 @@ import { cn, useThemedColors } from '../Modules/Theming';
 import { useLocalization, tn } from '../Modules/Localization';
 import SettingsIcon from './SettingsIcon';
 import CameraScreen from '../Modules/Chat/Screen/CameraScreen';
+import MapScreen from '../Modules/Chat/Screen/MapScreen';
 
 
 const AppStack = createStackNavigator();
@@ -60,6 +61,13 @@ const AppNavigation = () => {
             <AppStack.Screen
                 name="camera-screen"
                 component={CameraScreen}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <AppStack.Screen
+                name="map-screen"
+                component={MapScreen}
                 options={{
                     headerShown: false,
                 }}

@@ -63,9 +63,10 @@ export default Colors => StyleSheet.create({
         height: Metrics.width * 0.02,
         backgroundColor: Colors[cn.chat.transition3]
     },
-    cameraIconContainer: {
-        width: Metrics.width * 0.07,
+    shareIconContainer: {
+        width: Metrics.width * 0.06,
         height: undefined,
         aspectRatio: 1,
+        marginLeft: Metrics.width * 0.02,
     }
 });

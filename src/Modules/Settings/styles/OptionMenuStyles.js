@@ -6,11 +6,8 @@ export default Colors => StyleSheet.create({
     container: {
         marginVertical: Metrics.width * 0.03,
     },
-    titleText: {
+    text: {
         fontFamily: Fonts.type.bold,
-        fontSize: Fonts.size(18),
-        color: Colors[cn.settings.titleText],
-        marginBottom: Metrics.width * 0.01,
     },
     optionTouchable: {
         flexDirection: 'row',
