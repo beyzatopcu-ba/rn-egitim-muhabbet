@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 import Icon from '../../../Components/Icon';
 import { Svgs } from '../../../StylingConstants';
@@ -11,32 +11,62 @@ import styles from '../styles/MapScreenStyles';
 const MapScreen = props => {
 
     const colors = useThemedColors();
-    const [selectedLocation, setSelectedLocation] = useState(null);
+    const [selectedLocation, setSelectedLocation] = useState({
+        latitude: 41.129206,
+        longitude: 29.092501,
+    });
+    const [isDisplayOnly, setIsDisplayOnly] = useState();
+
+    useEffect(() => {
+        if (props.route.params?.location) {
+            setSelectedLocation(props.route.params?.location);
+        }
+
+        setIsDisplayOnly(!!props.route.params?.location);
+    }, [props.route.params?.location]);
 
     const _onPress_Send = () => {
+        const latitude = Math.floor(selectedLocation.latitude * 10000) / 10000;
+        const longitude = Math.floor(selectedLocation.longitude * 10000) / 10000;
         props.navigation.navigate("chat-screen", {
-            selectedLocation
+            location: {latitude, longitude}
         });
+    }
+
+    const _onPress_Map = e => {
+        if (!isDisplayOnly) {
+            setSelectedLocation(e.nativeEvent.coordinate);
+        }
     }
 
     return (
 
         <View style={{ flex: 1 }}>
             <MapView
+                onPress={_onPress_Map}
                 style={styles.map}
-                initialRegion={{
-                    latitude: 37.78825,
-                    longitude: -122.4324,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
+                region={{
+                    latitude: selectedLocation.latitude,
+                    longitude: selectedLocation.longitude,
+                    latitudeDelta: 0.05,
+                    longitudeDelta: 0.05,
                 }}
-            />
+            >
+                <Marker
+                    coordinate={selectedLocation}
+                />
+            </MapView>
             <TouchableOpacity onPress={props.navigation.goBack} style={styles.backTouchable}>
                 <Text style={styles.backText}>{"<"}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.iconContainer} onPress={_onPress_Send}>
-                <Icon svg={Svgs.Send} iconStyle={{ color: colors[cn.chat.sendIcon] }} />
-            </TouchableOpacity>
+            {
+                isDisplayOnly ?
+                    null
+                    :
+                    <TouchableOpacity style={styles.iconContainer} onPress={_onPress_Send}>
+                        <Icon svg={Svgs.Send} iconStyle={{ color: colors[cn.chat.sendIcon] }} />
+                    </TouchableOpacity>
+            }
         </View>
     );
 };

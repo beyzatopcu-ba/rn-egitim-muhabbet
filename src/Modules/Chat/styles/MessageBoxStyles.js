@@ -15,6 +15,17 @@ export default (Colors, params) => StyleSheet.create({
         padding: Metrics.width * 0.025,
         backgroundColor: params.backgroundColor,
     },
+    locationTouchable: {
+        marginBottom: Metrics.width * 0.05,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    locationIconContainer: {
+        width: Metrics.width * 0.05,
+        height: undefined,
+        aspectRatio: 1,
+        marginRight: Metrics.width * 0.03,
+    },
     messageText: {
         color: params.messageTextColor,
     },

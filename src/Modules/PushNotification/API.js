@@ -1,6 +1,7 @@
 import { Platform } from "react-native"
 import messaging from '@react-native-firebase/messaging';
 import Axios from 'axios';
+import { isObject } from "validate.js";
 
 const axios = Axios.create({
     baseURL: 'https://fcm.googleapis.com/fcm/',
@@ -23,11 +24,23 @@ export const unsubscribeFromFCM = () => {
 }
 
 export const sendNewMessageNotification = (message, notificationTitle) => {
+    const notification = {
+        title: notificationTitle,
+    }
+
+    // Fotoğraf veya konum ise
+    if (message.base64Image) {
+        notification.body = 'Fotoğraf';
+    }
+    else if (message.location) {
+        notification.body = 'Konum';
+    }
+    else {
+        notification.body = message;
+    }
+
     axios.post('send', {
-        notification: {
-            title: notificationTitle,
-            body: message.base64Image ? 'Fotoğraf' : message.substr(0, 30),
-        },
+        notification,
         to: '/topics/chat',
     })
     .then(response => console.log('Notification sent successfully', response))
