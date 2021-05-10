@@ -16,6 +16,7 @@ const MapScreen = props => {
         longitude: 29.092501,
     });
     const [isDisplayOnly, setIsDisplayOnly] = useState();
+    const refMap = useRef();
 
     useEffect(() => {
         if (props.route.params?.location) {
@@ -35,7 +36,16 @@ const MapScreen = props => {
 
     const _onPress_Map = e => {
         if (!isDisplayOnly) {
-            setSelectedLocation(e.nativeEvent.coordinate);
+            const location = e.nativeEvent.coordinate;
+            setSelectedLocation(location);
+            refMap.current.animateToRegion(
+                {
+                    latitude: location.latitude,
+                    longitude: location.longitude,
+                    latitudeDelta: 0.05,
+                    longitudeDelta: 0.05,
+                }
+            )
         }
     }
 
@@ -43,9 +53,10 @@ const MapScreen = props => {
 
         <View style={{ flex: 1 }}>
             <MapView
+                ref={ref => refMap.current = ref}
                 onPress={_onPress_Map}
                 style={styles.map}
-                region={{
+                initialRegion={{
                     latitude: selectedLocation.latitude,
                     longitude: selectedLocation.longitude,
                     latitudeDelta: 0.05,
