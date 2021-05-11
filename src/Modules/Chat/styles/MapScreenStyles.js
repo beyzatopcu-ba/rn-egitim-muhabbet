@@ -13,7 +13,7 @@ export default StyleSheet.create({
     backTouchable: {
         position: 'absolute',
         left: Metrics.width * 0.05,
-        top: Metrics.width * 0.05,
+        top: Metrics.width * 0.15,
         backgroundColor: 'white',
         width: Metrics.width * 0.15,
         height: undefined,

@@ -33,4 +33,16 @@ export default (Colors, params) => StyleSheet.create({
         resizeMode: 'contain',
         marginBottom: Metrics.width * 0.03,
     },
+    locationTouchable: {
+        flexDirection: 'row',
+        marginBottom: Metrics.width * 0.03,
+        alignItems: 'center',
+    },
+    locationIconContainer: {
+        width: Metrics.width * 0.05,
+        height: undefined,
+        aspectRatio: 1,
+        marginRight: Metrics.width * 0.03,
+
+    },
 });

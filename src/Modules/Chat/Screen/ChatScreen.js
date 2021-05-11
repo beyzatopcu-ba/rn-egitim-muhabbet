@@ -82,6 +82,13 @@ const ChatScreen = props => {
 
     const _sendLocation = location => {
         // ... konum gönderilecek
+        const message = {
+            location,
+        }
+
+        sendMessage(message, (senderName) => {
+            return loc.t(tn.newMessageFrom, { senderName })
+        })
     }
 
     const _renderChatItem = ({item}) => {
